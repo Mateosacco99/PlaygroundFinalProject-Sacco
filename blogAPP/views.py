@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from .models import *
 
 # Create your views here.
@@ -17,4 +17,9 @@ class ArticleDetailView(DetailView):
 
 def about(request):
     return render(request, "about.html", {})
+
+class AddPostView(CreateView):
+    model = Post
+    template_name = "add_post.html"
+    fields = "__all__"
 

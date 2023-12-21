@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Airsoft Den</title>
+        <title>{% block title %} Airsoft Den {% endblock title %}</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -24,8 +24,11 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="btn btn-dark" href="/about">Conocenos </a>
+              </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="btn btn-dark" href="/add_post">Crear Publicacion </a>
               </li>
             </ul>
           </div>

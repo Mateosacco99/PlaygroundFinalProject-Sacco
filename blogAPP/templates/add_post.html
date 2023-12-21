@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+
+{% block title %} Crear publicacion {% endblock title %}
+
+{% block contenidoQueCambia%}
+
+<h1>Crear Publicacion:</h1>
+<br>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-dark">Crear Publicacion </button>
+
+{% endblock contenidoQueCambia%}
