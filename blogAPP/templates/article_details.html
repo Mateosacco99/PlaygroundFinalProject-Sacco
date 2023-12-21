@@ -1,0 +1,18 @@
+{% extends "main.html" %}
+{% load static %}
+
+{% block contenidoQueCambia%}
+
+<h1>{{post.title}}</h1>
+<h2>{{post.subtitle}}</h2>
+<small>Creado por: {{post.author.first_name}} {{post.author.last_name}}</small>
+<small>{{ post.date }}</small>
+<hr>
+<br>
+<p>{{ post.body }}</p>
+<p>{{ post.imagepost }}</p>
+
+<br><br/>
+<a class="btn btn-dark" href="/">Volver al inicio. </a>
+
+{% endblock contenidoQueCambia%}
