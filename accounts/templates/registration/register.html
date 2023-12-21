@@ -1,0 +1,18 @@
+{% extends "main.html" %}
+{% load static %}
+
+{% block title %} Registrarse {% endblock title %}
+
+{% block contenidoQueCambia%}
+
+<h1>Registrate:</h1>
+<br>
+<div class="form-group">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-dark ">Registrarse</button>
+    </form>
+</div>
+
+{% endblock contenidoQueCambia%}
