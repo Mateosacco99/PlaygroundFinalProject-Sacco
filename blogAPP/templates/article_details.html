@@ -8,7 +8,9 @@
 <h2>{{post.subtitulo}}</h2>
 <small>Creado por: {{post.autor.first_name}} {{post.autor.last_name}}</small>
 <small>{{ post.fecha }}</small><br>
+{% if user.is_authenticated %}
 <a class="btn btn-primary btn-sm" href="{% url 'update_post' post.pk %}">Editar</a><a class="btn btn-danger btn-sm" href="{% url 'delete_post' post.pk %}">Borrar</a>
+{% endif %}
 <hr>
 <br>
 <p>{{ post.texto }}</p>
