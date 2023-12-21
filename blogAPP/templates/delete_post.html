@@ -1,0 +1,18 @@
+{% extends "main.html" %}
+{% load static %}
+
+{% block title %} Borrar publicacion {% endblock title %}
+
+{% block contenidoQueCambia%}
+
+<h1>Borrar publicacion...</h1>
+<br><br/>
+<p>Seguro que quieres borrar "{{ post.title }}"? </p>
+<div class="form-group">
+    <form method="POST">
+        {% csrf_token %}
+        <button class="btn btn-danger">Borrar</button>
+    </form>
+</div>
+
+{% endblock contenidoQueCambia%}

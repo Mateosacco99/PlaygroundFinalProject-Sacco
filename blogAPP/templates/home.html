@@ -5,12 +5,13 @@
 
 {% block contenidoQueCambia%}
 
+
 <ul>
     {% for post in object_list %}
 
     <li><h1><a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a></h1>
     "{{ post.subtitle }}"<br>
-    <small> by: {{ post.author.first_name }}  {{ post.author.last_name }} - {{ post.date }}</small><br></a>
+    <small> by: {{ post.author.first_name }}  {{ post.author.last_name }} - {{ post.date }}</small><br></a> 
     
     </li>
     <hr>
