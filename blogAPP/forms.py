@@ -4,22 +4,22 @@ from .models import Post
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ("title", "subtitle", "author", "body")
+        fields = ("titulo", "subtitulo", "autor", "texto")
         
         widgets = {
-            "title":forms.TextInput(attrs={'class':'form-control'}),
-            "subtitle":forms.TextInput(attrs={'class':'form-control'}),
-            "author":forms.Select(attrs={'class':'form-control'}),
-            "body":forms.Textarea(attrs={'class':'form-control'}),
+            "titulo":forms.TextInput(attrs={'class':'form-control'}),
+            "subtitulo":forms.TextInput(attrs={'class':'form-control'}),
+            "autor":forms.Select(attrs={'class':'form-control'}),
+            "texto":forms.Textarea(attrs={'class':'form-control'}),
         }
         
 class EditForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ("title", "subtitle", "body")
+        fields = ("titulo", "subtitulo", "texto")
         
         widgets = {
-            "title":forms.TextInput(attrs={'class':'form-control'}),
-            "subtitle":forms.TextInput(attrs={'class':'form-control'}),
-            "body":forms.Textarea(attrs={'class':'form-control'}),
+            "titulo":forms.TextInput(attrs={'class':'form-control'}),
+            "subtitulo":forms.TextInput(attrs={'class':'form-control'}),
+            "texto":forms.Textarea(attrs={'class':'form-control'}),
         }

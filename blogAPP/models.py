@@ -1,15 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
+from datetime import datetime, date
 
 # Create your models here.
 
 class Post(models.Model):
-    title = models.CharField(max_length=255)
-    subtitle = models.CharField(max_length=255)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-    body = models.TextField()
-    date = models.DateField(auto_now_add=True, auto_now=False)
+    titulo = models.CharField(max_length=255)
+    subtitulo = models.CharField(max_length=255)
+    autor = models.ForeignKey(User, on_delete=models.CASCADE)
+    texto = models.TextField()
+    fecha = models.DateField(auto_now_add=True, auto_now=False)
     
     def __str__(self):
         return self.title + ' | ' + str(self.author)
