@@ -12,7 +12,8 @@ class PostForm(forms.ModelForm):
             "titulo":forms.TextInput(attrs={'class':'form-control'}),
             "subtitulo":forms.TextInput(attrs={'class':'form-control'}),
             "categoria":forms.Select(choices=choices, attrs={'class':'form-control'}),
-            "autor":forms.Select(attrs={'class':'form-control'}),
+            "autor":forms.TextInput(attrs={'class':'form-control', 'value':'' , 'id':'placeholder', 'type':'hidden'}),
+            #"autor":forms.Select(attrs={'class':'form-control'}),
             "texto":forms.Textarea(attrs={'class':'form-control'}),
         }
         

@@ -6,15 +6,23 @@
 {% block contenidoQueCambia%}
 {% if user.is_authenticated %}
 
-<h1>Crear Publicacion:</h1>
-<br>
-<div class="form-group">
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-dark ">Crear Publicacion</button>
-    </form>
-</div>
+    <h1>Crear Publicacion:</h1>
+    <br>
+    <div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-dark ">Crear Publicacion</button>
+        </form>
+    </div>
+
+    <script>
+        var name = "{{ user.id }}";
+        document.getElementById("placeholder").value = name;
+
+
+    </script>
+
 {% else %}
 
 <center><h1>DEBES INICIAR SESION PARA REALIZAR ESTA ACCION!</h1></center>
