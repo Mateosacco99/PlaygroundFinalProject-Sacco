@@ -1,9 +1,19 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import *
-from .forms import PostForm, EditForm
+from .forms import PostForm, EditForm, CommentForm
 from django.urls import reverse_lazy
 
+class PagesView(ListView):
+    model = Post
+    template_name = "pages.html"
+    ordering = ["-id"]
+    
+    def get_context_data(self, *args, **kwargs):
+        cat_menu = Category.objects.all()
+        context = super(PagesView, self).get_context_data(*args, **kwargs)
+        context["cat_menu"] = cat_menu
+        return context
 
 class HomeView(ListView):
     model = Post
@@ -47,3 +57,13 @@ class DeletePostView(DeleteView):
 def CategoryView(request, cats):
     category_posts = Post.objects.filter(categoria=cats)
     return render(request, "categories.html", {'cats':cats, 'category_posts':category_posts})
+
+class AddCommentView(CreateView):
+	model = Comment
+	form_class = CommentForm
+	template_name = 'add_comment.html'
+	def form_valid(self, form):
+		form.instance.post_id = self.kwargs['pk']
+		return super().form_valid(form)
+
+	success_url = reverse_lazy('home')

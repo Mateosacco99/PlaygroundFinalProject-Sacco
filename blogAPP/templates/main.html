@@ -32,6 +32,7 @@
                         </a>
                         <ul class="dropdown-menu">
 
+                            <a class="dropdown-item" href="/pages">Todas</a>
                             {% for item in cat_menu %}
                             <a class="dropdown-item" href="{% url 'Category' item %}">{{ item }}</a>
                             {% endfor %}

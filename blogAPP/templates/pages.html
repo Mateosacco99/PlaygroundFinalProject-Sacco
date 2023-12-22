@@ -1,0 +1,35 @@
+{% extends "main.html" %}
+{% load static %}
+
+{% block title %} Todas nuestras Publicaciones {% endblock title %}
+
+{% block contenidoQueCambia%}
+
+
+<ul>
+{% if object_list %}
+<center><h1><strong>Todas nuestras Publicaciones:</strong></h1></center>
+    <hr>
+    <br>
+    <br>
+    {% for post in object_list %}
+
+    <li><h1><a href="{% url 'article-detail' post.pk %}">{{ post.titulo }}</a></h1>
+    "{{ post.subtitulo }}"<br>
+    <p> {{ post.texto | slice:":150" | safe }}... <a href="{% url 'article-detail' post.pk %}">(Continuar leyendo)</a></p>
+    <small> by: {{ post.autor.first_name }}  {{ post.autor.last_name }} - {{ post.fecha }} | 
+        <a href="{% url 'Category' post.categoria %}"><strong>{{ post.categoria }}</small><br></strong></a>
+    
+    </li>
+    <hr>
+    <br>
+
+    {% endfor %}
+    </ul>
+{% else %}
+    <center><h2><strong>Esta pagina no existe!</strong></h2></center>
+    <br>
+    <br>
+{% endif %}
+    
+{% endblock contenidoQueCambia%}

@@ -1,0 +1,27 @@
+{% extends "main.html" %}
+{% load static %}
+
+{% block title %} Agregar Comentario {% endblock title %}
+
+{% block contenidoQueCambia%}
+{% if user.is_authenticated %}
+    
+
+        <h1>Crear Publicacion:</h1>
+        <br>
+        <div class="form-group">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-dark ">Publicar Comentario</button>
+            </form>
+        </div>
+
+{% else %}
+
+<center><h1>DEBES INICIAR SESION PARA REALIZAR ESTA ACCION!</h1></center>
+<br>
+<br>
+
+{% endif %}
+{% endblock contenidoQueCambia%}
