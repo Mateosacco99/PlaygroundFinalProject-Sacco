@@ -11,7 +11,7 @@
 
     <li><h1><a href="{% url 'article-detail' post.pk %}">{{ post.titulo }}</a></h1>
     "{{ post.subtitulo }}"<br>
-    <p> {{ post.texto | slice:":150" }}... <a href="{% url 'article-detail' post.pk %}">(Continuar leyendo)</a></p>
+    <p> {{ post.texto | slice:":150" | safe }}... <a href="{% url 'article-detail' post.pk %}">(Continuar leyendo)</a></p>
     <small> by: {{ post.autor.first_name }}  {{ post.autor.last_name }} - {{ post.fecha }} | 
         <a href="{% url 'Category' post.categoria %}"><strong>{{ post.categoria }}</small><br></strong></a>
     
