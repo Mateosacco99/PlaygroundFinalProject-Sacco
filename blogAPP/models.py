@@ -20,7 +20,8 @@ class Post(models.Model):
         return self.titulo + ' | ' + str(self.autor)
     
     def get_absolute_url(self):
-        return reverse_lazy('article-detail', args=(str(self.id)))
+		#return reverse('article-detail', args=(str(self.id)) )
+		    return reverse('home')
     
 class Category(models.Model):
     nombre = models.CharField(max_length=255)

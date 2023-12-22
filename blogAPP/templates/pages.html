@@ -1,17 +1,17 @@
 {% extends "main.html" %}
 {% load static %}
 
-{% block title %} Todas nuestras Publicaciones {% endblock title %}
+{% block title %} Todas las publicaciones {% endblock title %}
 
 {% block contenidoQueCambia%}
 
 
 <ul>
 {% if object_list %}
-<center><h1><strong>Todas nuestras Publicaciones:</strong></h1></center>
+    <center><h1><strong>Todas las publicaciones:</strong></h1></center>
+    <br>
+    <br>
     <hr>
-    <br>
-    <br>
     {% for post in object_list %}
 
     <li><h1><a href="{% url 'article-detail' post.pk %}">{{ post.titulo }}</a></h1>
