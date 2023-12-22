@@ -1,0 +1,37 @@
+{% extends "main.html" %}
+{% load static %}
+
+{% block title %} Perfil {% endblock title %}
+
+{% block contenidoQueCambia%}
+
+<h1>Perfil de Usuario:</h1>
+
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+
+      {% if page_user.profile_pic %}
+        <img src="{{ page_user.profile_pic.url }}" width="175" height="175" class="rounded-circle"></a>
+      {% else %}
+        <img src='/static/blogAPP/assets/img/home-btn.png' width="175" height="175" class="rounded-circle"></a>
+      {% endif %}
+
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ page_user.user.first_name }}<br> {{ page_user.user.last_name }}</h5>
+          Usuario: {{page_user}}
+          <p class="card-text">{{page_user.bio}}</p><br>
+           {% if page_user.instagram_url %} 
+                <a href="{{post.autor.profile.instagram_url}}" target="_blank">Instagram</a></small></p>
+            {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+    {% if user.id == page_user.user.id %}
+        <a class="btn btn-primary btn-sm" href="{% url 'edit_profile' %}">Editar Perfil</a>
+    {% endif %}
+
+{% endblock contenidoQueCambia%}

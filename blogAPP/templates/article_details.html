@@ -17,11 +17,37 @@
 <br>
 <p>{{ post.texto | safe }}</p>
 {% if post.imagen %}
-    <img src="{{ post.imagen.url }}"
+    <img src="{{ post.imagen.url }}">
 {% endif %}
 
 <br><br/>
-<a class="btn btn-dark" href="/">Volver al inicio. </a><br>
+<a class="btn btn-dark" href="/">Volver al inicio. </a>
+<br>
+<br>
+
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+
+      {% if post.autor.profile.profile_pic %}
+        <a href="{% url 'show_profile_page' post.autor.profile.id %}"><img src="{{ post.autor.profile.profile_pic.url }}" width="175" height="175" class="rounded-circle"></a>
+      {% else %}
+        <a href="{% url 'show_profile_page' post.autor.profile.id %}"><img src='/static/blogAPP/assets/img/home-btn.png' width="175" height="175" class="rounded-circle"></a>
+      {% endif %}
+
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Creado por: {{post.autor.first_name}} {{post.autor.last_name}}</h5>
+          <p class="card-text">{{post.autor.profile.bio}}</p>
+          <p class="card-text"><small class="text-body-secondary">{{ post.fecha }} | 
+           {% if post.autor.profile.instagram_url %} 
+                <a href="{{post.autor.profile.instagram_url}}" target="_blank">Instagram</a></small></p>
+            {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 {% endblock contenidoQueCambia%}
