@@ -25,34 +25,51 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-                <a class="btn btn-dark" href="/about">Conocenos </a>
-              </li>
+            {% if cat_menu %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Categorias
+                        </a>
+                        <ul class="dropdown-menu">
 
-              {% if user.is_authenticated %}
+                            {% for item in cat_menu %}
+                            <a class="dropdown-item" href="{% url 'Category' item %}">{{ item }}</a>
+                            {% endfor %}
 
-                 <li class="nav-item">
-                <a class="btn btn-dark" href="/add_post">Crear Publicacion </a>
-                </li>
 
-                 <li class="nav-item">
-                <a class="btn btn-danger" href="{%  url 'logout' %}">Cerrar Sesion </a>
-                </li>
-
-              {% else %}
-
+                        </ul>
+                    </li>
+            {% endif %}
                 <li class="nav-item">
-                <a class="btn btn-dark" href="/accounts/register">Registrate </a>
-                </li>
-                </li>
-                <li class="nav-item">
-                <a class="btn btn-primary" href="{%  url 'login' %}">Iniciar Sesion </a>
-                </li>
+                    <a class="btn btn-dark" href="/about">Conocenos </a>
                 </li>
 
-              {% endif %}
+                {% if user.is_authenticated %}
 
+                    <li class="nav-item">
+                    <a class="btn btn-dark" href="/add_post">Crear Publicacion </a>
+                    </li>
 
+                    <li class="nav-item">
+                        <a class="btn btn-dark">Usuario: {{ user.username }} </a>
+                        </li>
+
+                    <li class="nav-item">
+                    <a class="btn btn-danger" href="{%  url 'logout' %}">Cerrar Sesion </a>
+                    </li>
+
+                {% else %}
+
+                    <li class="nav-item">
+                    <a class="btn btn-dark" href="/accounts/register">Registrate </a>
+                    </li>
+                    </li>
+                    <li class="nav-item" >
+                    <a class="btn btn-primary" href="{%  url 'login' %}" >Iniciar Sesion </a>
+                    </li>
+                    </li>
+
+                {% endif %}
 
 
             </ul>

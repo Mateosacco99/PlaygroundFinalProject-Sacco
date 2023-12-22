@@ -1,0 +1,31 @@
+{% extends "main.html" %}
+{% load static %}
+
+{% block title %} {{cats}} {% endblock title %}
+
+{% block contenidoQueCambia%}
+
+{% if category_posts %}
+
+    <center><h1>{{ cats }}</h1></center>
+    <hr>
+    <ul>
+    {% for post in category_posts %}
+
+    <li><h1><a href="{% url 'article-detail' post.pk %}">{{ post.titulo }}</a></h1>
+        "{{ post.subtitulo }}"<br>
+        <p> {{ post.texto | slice:":150" }}... <a href="{% url 'article-detail' post.pk %}">(Continuar leyendo)</a></p>
+        <small> by: {{ post.autor.first_name }}  {{ post.autor.last_name }} - {{ post.fecha }} </small><br></a> 
+        
+        </li>
+        <hr>
+        <br>
+
+    {% endfor %}
+    </ul>
+{% else %}
+    <center><h2><strong>Esta pagina no existe!</strong></h2></center>
+    <br>
+    <br>
+{% endif %}
+{% endblock contenidoQueCambia%}

@@ -5,21 +5,25 @@
 
 {% block contenidoQueCambia%}
 {% if user.is_authenticated %}
+    {% if user.id == post.autor.id %}
 
-<h1>Borrar publicacion...</h1>
-<br><br/>
-<p>Seguro que quieres borrar "{{ post.titulo }}"? </p>
-<div class="form-group">
-    <form method="POST">
-        {% csrf_token %}
-        <button class="btn btn-danger">Borrar</button>
-    </form>
-</div>
+        <h1>Borrar publicacion...</h1>
+        <br><br/>
+        <p>Seguro que quieres borrar "{{ post.titulo }}"? </p>
+        <div class="form-group">
+            <form method="POST">
+                {% csrf_token %}
+                <button class="btn btn-danger">Borrar</button>
+            </form>
+        </div>
+    {% else %} 
+        <center><h1>DEBES INICIAR SESION PARA REALIZAR ESTA ACCION!</h1></center>
+    {% endif %}
 {% else %}
 
-<center><h1>DEBES INICIAR SESION PARA REALIZAR ESTA ACCION!</h1></center>
-<br>
-<br>
+    <center><h1>DEBES INICIAR SESION PARA REALIZAR ESTA ACCION!</h1></center>
+    <br>
+    <br>
 
 {% endif %}
 {% endblock contenidoQueCambia%}

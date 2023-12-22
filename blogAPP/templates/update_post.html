@@ -5,17 +5,22 @@
 
 {% block contenidoQueCambia%}
 {% if user.is_authenticated %}
+    {% if user.id == post.autor.id %}
 
-<h1>Editar publicacion...</h1>
-<br><br/>
+        <h1>Editar publicacion...</h1>
+        <br><br/>
 
-<div class="form-group">
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-dark">Guardar Cambios</button>
-    </form>
-</div>
+        <div class="form-group">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-dark">Guardar Cambios</button>
+            </form>
+        </div>
+    {% else %} 
+        <center><h1>NO TIENES PERMISO PARA REALIZAR ESTA ACCION!</h1></center>
+    {% endif %}
+
 {% else %}
 
 <center><h1>DEBES INICIAR SESION PARA REALIZAR ESTA ACCION!</h1></center>
