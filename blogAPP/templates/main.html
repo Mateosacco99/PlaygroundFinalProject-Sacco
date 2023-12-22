@@ -45,15 +45,32 @@
                 </li>
 
                 {% if user.is_authenticated %}
-
-                    <li class="nav-item">
-                    <a class="btn btn-dark" href="/add_post">Crear Publicacion </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="btn btn-dark" href="{% url 'edit_profile' %}">Usuario: {{ user.username }}</a>
+                    {% if user.profile.id %}
+                        <li class="nav-item">
+                        <a class="btn btn-dark" href="/add_post">Crear Publicacion </a>
                         </li>
+                    {% endif %}
 
+                    </li>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Usuario: {{ user.username }}
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'edit_profile' %}">Configuracion de Usuario</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        {% if user.profile.id %}
+                            <li><a class="dropdown-item" href="{% url 'edit_profile_page' user.profile.id %}">Editar Perfil</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url 'show_profile_page' user.profile.id %}">Ver Perfil</a></li>
+                        {% else %}
+
+                            <li><a class="dropdown-item btn" href="{% url 'create_profile_page' %}"><STRONG>CONFIGURAR PERFIL</STRONG></a></li>
+                            <li><hr class="dropdown-divider"></li>
+
+                        {% endif %}
+                    </ul>
+                    </li>
                     <li class="nav-item">
                     <a class="btn btn-danger" href="{%  url 'logout' %}">Cerrar Sesion </a>
                     </li>

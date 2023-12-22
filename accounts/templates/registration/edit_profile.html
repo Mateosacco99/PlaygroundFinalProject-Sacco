@@ -1,17 +1,29 @@
 {% extends "main.html" %}
 {% load static %}
 
-{% block title %} Editar Perfil {% endblock title %}
+{% block title %} Editar configuracion de Perfil {% endblock title %}
 
 {% block contenidoQueCambia%}
 
-<h1>Editar perfil:</h1>
-<br>
-<div class="form-group">
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-dark ">Guardar Cambios</button>
-    </form>
-</div>
+{% if user.is_authenticated %}
+
+
+        <h1>Editar configuracion de Perfil:</h1>
+        <br>
+        <div class="form-group">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-dark ">Guardar Cambios</button>
+            </form>
+        </div>
+
+{% else %}
+
+    <center><h1>DEBES INICIAR SESION PARA REALIZAR ESTA ACCION!</h1></center>
+    <br>
+    <br>
+    
+{% endif %}
+
 {% endblock contenidoQueCambia%}

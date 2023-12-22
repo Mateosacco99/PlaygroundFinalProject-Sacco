@@ -5,24 +5,30 @@
 
 {% block contenidoQueCambia%}
 {% if user.is_authenticated %}
+    {% if user.profile.id %}
 
-    <h1>Crear Publicacion:</h1>
-    <br>
-    <div class="form-group">
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.media }}
-            {{ form.as_p }}
-            <button class="btn btn-dark ">Crear Publicacion</button>
-        </form>
-    </div>
+        <h1>Crear Publicacion:</h1>
+        <br>
+        <div class="form-group">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.media }}
+                {{ form.as_p }}
+                <button class="btn btn-dark ">Crear Publicacion</button>
+            </form>
+        </div>
 
-    <script>
-        var name = "{{ user.id }}";
-        document.getElementById("placeholder").value = name;
+        <script>
+            var name = "{{ user.id }}";
+            document.getElementById("placeholder").value = name;
 
 
-    </script>
+        </script>
+    {% else %}
+
+       <center><h1>DEBES CONFIGURAR TU PERFIL PARA REALIZAR ESTA ACCION!</h1></center> 
+
+    {% endif %}
 
 {% else %}
 
