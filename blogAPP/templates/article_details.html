@@ -16,7 +16,9 @@
 <hr>
 <br>
 <p>{{ post.texto | safe }}</p>
-<p>{{ post.imagepost }}</p>
+{% if post.imagen %}
+    <img src="{{ post.imagen.url }}"
+{% endif %}
 
 <br><br/>
 <a class="btn btn-dark" href="/">Volver al inicio. </a><br>

@@ -14,6 +14,7 @@ class Post(models.Model):
     texto = RichTextField(blank=True, null=True)
     fecha = models.DateField(auto_now_add=True, auto_now=False)
     categoria = models.CharField(max_length=20, default='Sin Categoria')
+    imagen = models.ImageField(null=True, blank=True, upload_to="images/")
     
     def __str__(self):
         return self.titulo + ' | ' + str(self.autor)

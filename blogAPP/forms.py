@@ -6,7 +6,7 @@ choices = Category.objects.all().values_list('nombre', 'nombre')
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ("titulo", "subtitulo","categoria", "autor", "texto")
+        fields = ("titulo", "subtitulo","categoria", "autor", "texto", "imagen")
         
         widgets = {
             "titulo":forms.TextInput(attrs={'class':'form-control'}),
@@ -20,7 +20,7 @@ class PostForm(forms.ModelForm):
 class EditForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ("titulo", "subtitulo", "categoria", "texto")
+        fields = ("titulo", "subtitulo", "categoria", "texto", "imagen")
         
         widgets = {
             "titulo":forms.TextInput(attrs={'class':'form-control'}),
